@@ -3,7 +3,7 @@ from utils import calculate_splitwise, pairwise_settlement, simplify_debts
 
 st.set_page_config(page_title="Splitwise App", layout="wide")
 
-st.title("💸 Splitwise Clone - Group Expense Manager")
+st.title("💸 Group Expense Splitter (Splitwise Clone)")
 
 # ---------------- SESSION STATE ----------------
 if "group_created" not in st.session_state:
