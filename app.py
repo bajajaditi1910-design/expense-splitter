@@ -3,7 +3,7 @@ from utils import calculate_splitwise, pairwise_settlement, simplify_debts
 
 st.set_page_config(page_title="Splitwise App", layout="wide")
 
-st.title("💸 Group Expense Splitter (Splitwise Clone)")
+st.title("💸 Splitwise Clone - Group Expense Manager")
 
 # ---------------- SESSION STATE ----------------
 if "group_created" not in st.session_state:
@@ -95,7 +95,11 @@ else:
         for debtor in debts:
             for creditor in debts[debtor]:
                 amt = debts[debtor][creditor]
-                st.write(f"➡ {debtor} owes {creditor} ₹{round(amt,2)}")
+
+                st.markdown(
+                    f"🔴 <b>{debtor}</b> owes 🟢 <b>{creditor}</b> ₹{round(amt,2)}",
+                    unsafe_allow_html=True
+                )
     else:
         st.info("No splits yet")
 
@@ -118,4 +122,14 @@ else:
                 result = simplify_debts(debts)
 
             for r in result:
-                st.success(r)
+                if "owes" in r:
+                    debtor, rest = r.split(" owes ")
+                else:
+                    debtor, rest = r.split(" pays ")
+
+                creditor, amount = rest.split(" ₹")
+
+                st.markdown(
+                    f"🔴 <b>{debtor}</b> → 🟢 <b>{creditor}</b> ₹{amount}",
+                    unsafe_allow_html=True
+                )
