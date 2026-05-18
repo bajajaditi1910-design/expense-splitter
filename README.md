@@ -6,6 +6,9 @@ It tracks shared expenses, calculates who owes whom, and provides both clear (pa
 ## 🚀 Live Demo  
 https://expense-splitter-aditi.streamlit.app
 
+## 🎥 Demo Video  
+
+
 ## 💡 Features  
 - Group creation and member management  
 - Add and track shared expenses  
